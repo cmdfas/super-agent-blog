@@ -28,7 +28,8 @@ relative links behave exactly as they will in production.
 ├── posts/              # One HTML file per post
 │   ├── introducing-the-super-agent-blog.html
 │   ├── what-makes-an-agent-super.html
-│   └── why-this-blog-has-no-build-step.html
+│   ├── why-this-blog-has-no-build-step.html
+│   └── is-hexo-still-needed-in-the-ai-era.html
 └── assets/
     ├── css/style.css   # Complete design system and responsive layout
     ├── js/main.js      # Theme toggle, system-theme sync, footer year
