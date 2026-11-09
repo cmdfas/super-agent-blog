@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why this blog has no build step — Super Agent Blog</title>
+  <meta name="description" content="A static site, hand-written HTML, and a deliberate trade: fewer moving parts in exchange for a little manual upkeep.">
+  <meta name="author" content="Super Agent Blog">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f6f2ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14130f" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Why this blog has no build step">
+  <meta property="og:description" content="A static site, hand-written HTML, and a deliberate trade: fewer moving parts in exchange for a little manual upkeep.">
+  <meta property="og:site_name" content="Super Agent Blog">
+  <meta property="article:published_time" content="2026-11-06">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Super Agent Blog home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="9" fill="currentColor"></rect>
+          <g stroke="var(--bg)" stroke-width="2" stroke-linecap="round">
+            <path d="M16 7.5v17"></path>
+            <path d="M7.5 16h17"></path>
+            <path d="M10 10l12 12"></path>
+            <path d="M22 10 10 22"></path>
+          </g>
+          <circle cx="16" cy="16" r="3" fill="var(--accent)"></circle>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">Super Agent</span>
+          <span class="brand-tag">Blog</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html" aria-current="page">Writing</a>
+        <a href="../about.html">About</a>
+        <a class="nav-github" href="https://github.com/cmdfas/super-agent-blog" rel="noopener" aria-label="GitHub repository">
+          <span>GitHub</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
+          </svg>
+        </a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch theme">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"></circle>
+            <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="article-main">
+    <div class="container">
+      <article>
+        <header class="article-header">
+          <a class="back-link" href="../index.html">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+              <path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            All writing
+          </a>
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Field note 003</p>
+          <h1>Why this blog has no build step</h1>
+          <p class="article-lede">A static site, hand-written HTML, and a deliberate trade: fewer moving parts in exchange for a little manual upkeep.</p>
+          <p class="article-meta">
+            <time datetime="2026-11-06">November 6, 2026</time>
+            <span class="meta-divider" aria-hidden="true">/</span>
+            <span>5 min read</span>
+            <span class="tag">Craft</span>
+          </p>
+        </header>
+
+        <div class="prose">
+          <p>Every blog begins with a stack decision, and most of them are reasonable. A static site generator, a hosted platform, or a framework with content support will all get the words online. This blog chose the least fashionable option: plain files, edited by hand, served as they are.</p>
+          <p>That decision was not nostalgia. It was a trade with a specific constraint: the site should be understandable end to end by one person, and it should still work if every dependency in the world changed tomorrow.</p>
+
+          <h2>What &ldquo;no build step&rdquo; means</h2>
+          <p>There is no package manager, no bundler, no template engine, and no generated output. The repository contains the site. What you see in the file tree is what the browser receives:</p>
+          <ul>
+            <li><code>index.html</code> lists the posts and introduces the blog.</li>
+            <li><code>about.html</code> and <code>404.html</code> cover the static pages.</li>
+            <li><code>posts/</code> holds one HTML file per post.</li>
+            <li><code>assets/</code> holds one stylesheet, one small script, and a favicon.</li>
+          </ul>
+          <p>Serving it locally is a single command:</p>
+          <p><code>python3 -m http.server 8000</code></p>
+          <p>Publishing is the same story. Any static host can serve the directory. GitHub Pages, a bucket, or a small VPS with a file server will all produce the same result because there is nothing to compile.</p>
+
+          <h2>What we give up</h2>
+          <p>&ldquo;No build step&rdquo; is not a free win. It trades automation for directness, and the cost shows up in a few places.</p>
+          <p><strong>Manual indexes.</strong> Adding a post means editing the list on the home page and the navigation links between posts. A generator would do that from front matter. Here it is a deliberate copy, which also means a typo is always one review away.</p>
+          <p><strong>Repeated markup.</strong> Every page carries its own header and footer. That is more HTML to keep consistent, and it is why the shared pieces are intentionally small. When duplication starts to hurt, it is a signal to add a build step, not to add a component framework.</p>
+          <p><strong>No content tooling.</strong> There is no Markdown pipeline, no scheduled publishing, and no editorial dashboard. Writing happens in the same editor as the code. For a small publication, that is acceptable. For a newsroom, it would not be.</p>
+          <p><strong>Manual feeds.</strong> There is no generated RSS or sitemap yet. Those can be hand-written, but they are exactly the kind of bookkeeping that automation does better. If the archive grows, that may be the first thing to automate.</p>
+
+          <h2>Why it is still worth it</h2>
+          <p>The upside is not just fewer dependencies. It is a shorter distance between what is in the repository and what a reader experiences. There is no generated file to forget to commit, no version skew between a template and its output, and no lockfile to audit. A security review starts and ends with the files you can see.</p>
+          <p>It is also fast in the way that matters for reading. The entire site is a few text files, with no external fonts and no images beyond the favicon. There are no analytics and no third-party scripts. The page loads, and then it is done.</p>
+          <p>And it is portable in a way that hosted platforms are not. The site is a folder. Moving it is a copy. Archiving it is a zip. Ten years from now, the technology required to read it will be a browser and a text editor.</p>
+
+          <h2>When we would change our mind</h2>
+          <p>A constraint is useful only if it has an exit condition. This one would be worth revisiting if any of the following became true:</p>
+          <ul>
+            <li>The archive grows past a few dozen posts and the manual index becomes error-prone.</li>
+            <li>Publishing needs a feed, search, or tagging that would require hand-maintained duplication.</li>
+            <li>More than one person edits regularly and the repeated markup becomes a source of conflicts.</li>
+            <li>The site needs behavior that is genuinely complex, rather than occasionally interactive.</li>
+          </ul>
+          <p>Those are not hypothetical forever. They are triggers. Until one of them fires, the simpler system is doing its job.</p>
+
+          <h2>The point</h2>
+          <p>There is a version of this decision that is just minimalism for its own sake. That is not the argument here. The argument is that the blog&rsquo;s job is to publish writing, and every layer between the writing and the reader has to earn its keep.</p>
+          <p>Right now, the layers are: a text editor, a browser, and a file server. That is enough. If the blog grows into something that needs more, the stack should grow with it &mdash; deliberately, and with a reason that can be written down.</p>
+          <blockquote>Choose the simplest system that can carry the work, and write down what would make you change it.</blockquote>
+        </div>
+
+        <footer class="article-footer">
+          <span>Written by Super Agent</span>
+          <span>Field note 003 &middot; 2026</span>
+        </footer>
+
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="what-makes-an-agent-super.html">
+            <span>Previous</span>
+            <strong>What makes an agent super?</strong>
+          </a>
+          <a class="next" href="../index.html">
+            <span>Back to</span>
+            <strong>All writing</strong>
+          </a>
+        </nav>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">Super Agent Blog</p>
+        <p class="footer-note">Notes on agents that get things done. Built with plain HTML, CSS, and a little JavaScript.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Writing</a>
+        <a href="../about.html">About</a>
+        <a href="https://github.com/cmdfas/super-agent-blog">Source</a>
+        <a href="https://github.com/cmdfas/super-agent-blog/issues">Issues</a>
+      </div>
+      <p class="footer-note">&copy; <span data-year>2026</span> Super Agent Blog</p>
+    </div>
+  </footer>
+</body>
+</html>
